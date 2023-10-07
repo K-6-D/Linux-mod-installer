@@ -3,9 +3,8 @@
 # MX-Bikes-0, to-do-1, to-do-2, to-do-3, to-do-4, to-do-5, to-do-6
 #------------------------------------------------------------------
 game_number=0 # Game numbers are above.
-load_default=true # 
 #------------------------------------------------------------------
-# Link to compatible Mods: https://shorturl.at/mHJY9
+# Link to compatible Mods: https://raw.githubusercontent.com/K-6-D/steam-deck-mod-installer/main/Mods-lists/MX-Bikes.list?token=GHSAT0AAAAAACINHU3UB4IAQ45QVTHYKX5MZJBYFJQ
 mod_name+=('Enduro-Loop-Main') && mod_links+=('https://public.sn.files.1drv.com/y4msWpHCaMV9M1OIrb44nY9d-a-GINezkRSPrlPA5cyn4Rn10h5TKEhsh1HSniBahVAOQuaJzT0QtPDryfw4QZWUDcSnudNQKjHoct8Q4S-Gb0tTIk7n2rYTtLiNGzyiO9b6Qty7exZkVM-Tj9JbaB2K6q5YfeaKn2_LEu52pW6hjLGtrWYLGn8V8HV8X7ehjU6GcRlEF19RibI0rYLZZsL5_rRCXxt01_-jCVw7zghbKY?AVOverride=1')
 mod_name+=('Club-MX') && mod_links+=('https://public.sn.files.1drv.com/y4m5HcBsX9CacIi0txyp3-y940NJt-TDNlR2izDFJXkFn7aA9_8IfyMRdXbQ5YKvI7fhuW1Qb0CwCZEiGUKyo3E92iyst8Mf--zPnO34n-jiykKNUmSGiZxeEkHj67yhuQA3uv8F_K1oW2dEijK7pcjuDDUE8YxWGIjlgGXE9SH_sV021DGyYEA2RDXzbB2dbs-C0loWb8lz_m0GPF9B1zD_iAsPcQJXJXMHMVdCOOzpPQ?AVOverride=1')
 
@@ -21,9 +20,12 @@ readonly mods_backup_directory="$mod_installer_directory/backups"
 readonly download_directory="$mod_installer_directory/downloaded-mods"
 readonly mod_installer_config="$mod_installer_directory/config.conf"
 readonly mods_list_directory="$mod_installer_directory/installed-mods"
+
 #-------------------------Game-Directories-------------------------
 game_directory+=("$steam_directory/compatdata/655500/pfx/drive_c/users/steamuser/Documents/PiBoSo/MX Bikes/mods")
 #game_directory+=("$steam_directory/compatdata/000000/pfx/drive_c/users/steamuser/Documents/")
+#--------------------------Game-Mod-lists--------------------------
+game_mod_list+=('https://raw.githubusercontent.com/K-6-D/steam-deck-mod-installer/main/Mods-lists/MX-Bikes.list?token=GHSAT0AAAAAACINHU3V6U6SBVZXPNNWBQ4YZJBW7CQ')
 #------------------------------------------------------------------
 create_directorys+=("$mod_installer_directory")
 create_directorys+=("$mods_backup_directory")
@@ -36,10 +38,6 @@ kill_processes() {
     sleep 1
 }
 basic() {
-	if [[ "$PWD/$0" != "$mod_installer_script" ]]; then
-		cp "$PWD/$0" "$mod_installer_script"
-	fi
-	
 	if [[ $game_number == "0" ]]; then
 		game_name='MX-Bikes'
 	elif [[ $game_number == "1" ]]; then
@@ -50,6 +48,11 @@ basic() {
 	fi
 
 	trap kill_subprocesses SIGINT
+}
+backup_script() {
+	if [[ "$PWD/$0" != "$mod_installer_script" ]]; then
+		cp "$PWD/$0" "$mod_installer_script"
+	fi
 }
 create_directorys() {
 	for i in "${create_directorys[@]}"; do
@@ -65,10 +68,9 @@ create_directorys() {
 	    else
 	    	echo -e "${GREEN}Directory Already Created${NOCOLOR}"
 	    fi
-	    
-		sleep .2
 	done
 
+	backup_script
 }
 create_config_files() {
 	if [[ ! -e "$mod_installer_config" ]]; then

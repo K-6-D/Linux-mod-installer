@@ -1,14 +1,16 @@
 #!/bin/bash
 #--------------------------Supported Games-------------------------
-# MX-Bikes-0, to-do-1, to-do-2, to-do-3, to-do-4, to-do-5, to-do-6
+# Link to compatible Mods: 
+mod_name+=('Enduro-Loop')          mod_links+=('https://onedrive.live.com/download?resid=2A9F45089CF290C9%21594269&authkey=!AIx4MSRq2UgNSXE')
+mod_name+=('Club-MX-compound')     mod_links+=('https://onedrive.live.com/download?resid=2A9F45089CF290C9%21594270&authkey=!AGPfYKrjPHzU54A')
+mod_name+=('Motofactory-Compound') mod_links+=('https://onedrive.live.com/download?resid=2A9F45089CF290C9%21594271&authkey=!ALgoI1CAMhNuJsU')
+mod_name+=('Jurassic-Track')       mod_links+=('https://onedrive.live.com/download?resid=2A9F45089CF290C9%21594272&authkey=!AGHIv67pvAMply0')
+mod_name+=('Supermoto-OEM') 	   mod_links+=('https://onedrive.live.com/download?resid=2A9F45089CF290C9%21594273&authkey=!AL_W8qVTXu3173w')
+mod_name+=('Enduro-Bike-Pack')     mod_links+=('https://onedrive.live.com/download?resid=2A9F45089CF290C9%21594274&authkey=!ADMFRKJW3nYTDH8')
+mod_name+=('OEM-Bike-Pack')        mod_links+=('https://onedrive.live.com/download?resid=2A9F45089CF290C9%21594275&authkey=!ABTZvP1CnPpi7Bg')
 #------------------------------------------------------------------
-game_number=0 # Game numbers are above.
-#------------------------------------------------------------------
-# Link to compatible Mods: https://raw.githubusercontent.com/K-6-D/steam-deck-mod-installer/main/Mods-lists/MX-Bikes.list?token=GHSAT0AAAAAACINHU3UB4IAQ45QVTHYKX5MZJBYFJQ
-mod_name+=('Enduro-Loop-Main') && mod_links+=('https://public.sn.files.1drv.com/y4msWpHCaMV9M1OIrb44nY9d-a-GINezkRSPrlPA5cyn4Rn10h5TKEhsh1HSniBahVAOQuaJzT0QtPDryfw4QZWUDcSnudNQKjHoct8Q4S-Gb0tTIk7n2rYTtLiNGzyiO9b6Qty7exZkVM-Tj9JbaB2K6q5YfeaKn2_LEu52pW6hjLGtrWYLGn8V8HV8X7ehjU6GcRlEF19RibI0rYLZZsL5_rRCXxt01_-jCVw7zghbKY?AVOverride=1')
-mod_name+=('Club-MX') && mod_links+=('https://public.sn.files.1drv.com/y4m5HcBsX9CacIi0txyp3-y940NJt-TDNlR2izDFJXkFn7aA9_8IfyMRdXbQ5YKvI7fhuW1Qb0CwCZEiGUKyo3E92iyst8Mf--zPnO34n-jiykKNUmSGiZxeEkHj67yhuQA3uv8F_K1oW2dEijK7pcjuDDUE8YxWGIjlgGXE9SH_sV021DGyYEA2RDXzbB2dbs-C0loWb8lz_m0GPF9B1zD_iAsPcQJXJXMHMVdCOOzpPQ?AVOverride=1')
-
-#------------------------------------------------------------------
+readonly game_number=0
+readonly game_name='MX-Bikes'
 readonly RED='\033[0;31m'
 readonly GREEN='\033[0;32m'
 readonly NOCOLOR='\033[0m'
@@ -20,12 +22,8 @@ readonly mods_backup_directory="$mod_installer_directory/backups"
 readonly download_directory="$mod_installer_directory/downloaded-mods"
 readonly mod_installer_config="$mod_installer_directory/config.conf"
 readonly mods_list_directory="$mod_installer_directory/installed-mods"
-
 #-------------------------Game-Directories-------------------------
 game_directory+=("$steam_directory/compatdata/655500/pfx/drive_c/users/steamuser/Documents/PiBoSo/MX Bikes/mods")
-#game_directory+=("$steam_directory/compatdata/000000/pfx/drive_c/users/steamuser/Documents/")
-#--------------------------Game-Mod-lists--------------------------
-game_mod_list+=('https://raw.githubusercontent.com/K-6-D/steam-deck-mod-installer/main/Mods-lists/MX-Bikes.list?token=GHSAT0AAAAAACINHU3V6U6SBVZXPNNWBQ4YZJBW7CQ')
 #------------------------------------------------------------------
 create_directorys+=("$mod_installer_directory")
 create_directorys+=("$mods_backup_directory")
@@ -38,15 +36,6 @@ kill_processes() {
     sleep 1
 }
 basic() {
-	if [[ $game_number == "0" ]]; then
-		game_name='MX-Bikes'
-	elif [[ $game_number == "1" ]]; then
-		game_name='LOL-Bikes'
-	else
-		echo -e "${RED}Game is not Supported!${NOCOLOR}"
-		kill_processes
-	fi
-
 	trap kill_subprocesses SIGINT
 }
 backup_script() {
@@ -180,3 +169,5 @@ backup_mods #4
 download_mods #5
 
 install_mods #6
+
+curl -sSL "link" | bash

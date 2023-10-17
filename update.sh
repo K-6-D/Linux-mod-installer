@@ -94,18 +94,18 @@ function make_desktop_sortcuts() {
     counter=0
     
     for links in "${logo_links[@]}"; do
-    	wget -q -O "${logo_names[$counter]}" "$links"
-
-	    echo "[Desktop Entry]
-	    Name=${names_desktop[$counter]}
-	    Exec=${executables[$counter]}
-	    Icon=${logo_names[$counter]}
-	    Terminal=true
-	    Type=Application
-	    StartupNotify=true"\
-	    > "$HOME/Desktop/${names_desktop[$counter]}.desktop" &&\
-	    chmod +x "$HOME/Desktop/${names_desktop[$counter]}.desktop"
-
+        if [ ! -e "${logo_names[$counter]}"  ]; then
+            wget -q -O "${logo_names[$counter]}" "$links"
+            echo "[Desktop Entry]
+	        Name=${names_desktop[$counter]}
+	        Exec=${executables[$counter]}
+	        Icon=${logo_names[$counter]}
+	        Terminal=true
+	        Type=Application
+	        StartupNotify=true"\
+	        > "$HOME/Desktop/${names_desktop[$counter]}.desktop" &&\
+	        chmod +x "$HOME/Desktop/${names_desktop[$counter]}.desktop"
+        fi
     	((counter++))
     done
 }

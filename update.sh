@@ -37,12 +37,6 @@ function create_directorys() {
 	done
 }
 
-#------------------------------Logos-------------------------------
-logo_names+=("$mod_images_directory/logo.png") && logo_links+=('https://t4.ftcdn.net/jpg/01/21/22/57/360_F_121225745_6MScSAbSWYSWlRsPJonDPPDcp84BrdKo.jpg')
-logo_names+=("$mod_images_directory/reset-logo.png") && logo_links+=('https://images.squarespace-cdn.com/content/54b55e28e4b04d469d0fc8eb/1504188257429-JM5TDS0REGART87DKJ8P/reset+button?format=1500w&content-type=image%2Fjpeg')
-logo_names+=("$mod_images_directory/update-logo.png") && logo_links+=('https://www.stpaulschool.ca/wp-content/uploads/2021/01/New-Update.png')
-
-
 function make_desktop_sortcuts() {
 	counter=0
 
@@ -85,7 +79,6 @@ for i in "${steam_directorys[@]}"; do
 		break
 	fi
 done
-
 #------------------------------------------------------------------
 readonly mod_installer_directory="$steam_directory/mod_installer"
 readonly mod_images_directory="$mod_installer_directory/images"
@@ -98,6 +91,10 @@ readonly mod_installer_update_script_link='https://raw.githubusercontent.com/K-6
 #------------------------------------------------------------------
 create_directorys+=("$mod_installer_directory")
 create_directorys+=("$mod_images_directory")
+#------------------------------Logos-------------------------------
+logo_names+=("$mod_images_directory/logo.png") && logo_links+=('https://t4.ftcdn.net/jpg/01/21/22/57/360_F_121225745_6MScSAbSWYSWlRsPJonDPPDcp84BrdKo.jpg')
+logo_names+=("$mod_images_directory/reset-logo.png") && logo_links+=('https://images.squarespace-cdn.com/content/54b55e28e4b04d469d0fc8eb/1504188257429-JM5TDS0REGART87DKJ8P/reset+button?format=1500w&content-type=image%2Fjpeg')
+logo_names+=("$mod_images_directory/update-logo.png") && logo_links+=('https://www.stpaulschool.ca/wp-content/uploads/2021/01/New-Update.png')
 #------------------------------------------------------------------
 if ping_wan "show"; then
     rm "$mod_installer_script" && curl -sSL "$mod_installer_script_link" | tr -d '\r' > "$mod_installer_script"

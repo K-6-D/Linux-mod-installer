@@ -114,11 +114,19 @@ ping_wan
 
 find_steam_directory
 
+echo 1
+
 create_directorys
+
+echo 2
 
 download_files
 
+echo 3
+
 make_desktop_sortcuts
+
+echo 4
 
 echo -e "${GREEN}Updated${NOCOLOR}!."
 echo -e "${GREEN}Press enter to Continue${NOCOLOR}..."

@@ -67,6 +67,8 @@ function create_directorys() {
 	    fi
 	    sleep .2
 	done
+
+	echo ""
 }
 function create_config_files() {
 	if [[ ! -e "$mod_installer_config" ]]; then

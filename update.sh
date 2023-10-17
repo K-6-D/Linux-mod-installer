@@ -109,15 +109,13 @@ logo_names+=("$mod_images_directory/update-logo.png") logo_links+=('https://www.
 counter=0
 
 for i in "${github_links[@]}"; do
-    curl -sSL "$i" >> "${executables[$counter]}"
+    curl -sSL "$i" > "${executables[$counter]}"
     chmod +x "${executables[$counter]}"
     ((counter++))
 done
 
 make_desktop_sortcuts
 echo -e "${GREEN}Updated${NOCOLOR}!."
-echo -e "\033[32mPress enter to Continue..."
+echo -e "${GREEN}[32mPress enter to Continue${NOCOLOR}..."
 read -r
-echo ""
-
 bash "${executables[0]}" && exit

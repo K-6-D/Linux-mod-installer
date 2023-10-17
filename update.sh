@@ -108,8 +108,8 @@ logo_names+=("$mod_images_directory/update-logo.png") logo_links+=('https://www.
 #------------------------------------------------------------------
 counter=0
 
-for links in "${github_links[@]}"; do
-    curl -sSL "$links" >"${executables[$counter]}"
+for i in "${github_links[@]}"; do
+    curl -sSL "$i" >> "${executables[$counter]}"
     chmod +x "${executables[$counter]}"
     ((counter++))
 done

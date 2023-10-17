@@ -97,8 +97,8 @@ logo_names+=("$mod_images_directory/reset-logo.png") && logo_links+=('https://im
 logo_names+=("$mod_images_directory/update-logo.png") && logo_links+=('https://www.stpaulschool.ca/wp-content/uploads/2021/01/New-Update.png')
 #------------------------------------------------------------------
 if ping_wan "show"; then
-    rm "$mod_installer_script" && curl -sSL "$mod_installer_script_link" | tr -d '\r' > "$mod_installer_script"
-    rm "$mod_installer_update_script" && curl -sSL "$mod_installer_update_script_link" | tr -d '\r' > "$mod_installer_update_script"
+    curl -sSL "$mod_installer_script_link" | tr -d '\r' > "$mod_installer_script"
+    curl -sSL "$mod_installer_update_script_link" | tr -d '\r' > "$mod_installer_update_script"
     chmod +x "$mod_installer_script"
     chmod +x "$mod_installer_update_script"
     make_desktop_sortcuts

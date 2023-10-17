@@ -9,7 +9,6 @@ mod_name+=('OEM-Bike-Pack')        mod_links+=('https://download2439.mediafire.c
 #mod_name+=('Supermoto-OEM') 	    mod_links+=('NULL')
 #mod_name+=('Enduro-Bike-Pack')     mod_links+=('NULL')
 #------------------------------------------------------------------
-#test
 readonly game_number=0
 readonly game_name='MX-Bikes'
 readonly RED='\033[0;31m'
@@ -152,7 +151,8 @@ push_update() {
 backup_mods() {
 	if [[ ! -e "$mods_backup_directory/$game_name-backup.zip" ]]; then
 		echo -e "${RED}Backing up game data${NOCOLOR}! This can take some time.!"
-		zip -r "$mods_backup_directory/$game_name-backup.zip" "${game_directory[$game_number]}" >/dev/null
+		zip -r "$mods_backup_directory/$game_name-backup.zip" "${game_directory[$game_number]}" >/dev/null\
+		&& echo -e "${GREEN}Backup finished${NOCOLOR}!."
 	fi
 }
 download_mods() {

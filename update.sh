@@ -1,7 +1,8 @@
 #!/bin/bash
-readonly RED='\033[0;31m'
-readonly GREEN='\033[0;32m'
-readonly NOCOLOR='\033[0m'
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NOCOLOR='\033[0m'
+
 steam_directory=""
 mod_installer_directory=""
 mod_images_directory=""
@@ -68,10 +69,14 @@ function download_files() {
 
     counter=0
 
-    for links in "${github_links[@]}"; do
-        curl -sSL "$links" > "${executables[$counter]}"
-        chmod +x "${executables[counter]}"
-        (( counter++ ))
+    for link in "${github_links[@]}"; do
+        if curl -sSL "$link" > "${executables[$counter]}"; then
+            chmod +x "${executables[counter]}"
+        else
+            echo -e "${RED}Failed to update: ${github_links[$counter]}${NOCOLOR}"
+            kill_processes
+        fi
+        ((counter++))
     done
 
 }
@@ -93,31 +98,31 @@ function make_desktop_sortcuts() {
     )
     counter=0
     
-    for links in "${logo_links[@]}"; do
-        if [ ! -e "${logo_names[$counter]}"  ]; then
-            wget -q -O "${logo_names[$counter]}" "$links"
-            echo "[Desktop Entry]
-	        Name=${names_desktop[$counter]}
-	        Exec=${executables[$counter]}
-	        Icon=${logo_names[$counter]}
-	        Terminal=true
-	        Type=Application
-	        StartupNotify=true"\
-	        > "$HOME/Desktop/${names_desktop[$counter]}.desktop" &&\
-	        chmod +x "$HOME/Desktop/${names_desktop[$counter]}.desktop"
+    for link in "${logo_links[@]}"; do
+        if [ ! -e "${logo_names[$counter]}" ]; then
+            if wget -q -O "${logo_names[$counter]}" "$link"; then
+                echo "[Desktop Entry]
+                Name=${names_desktop[$counter]}
+                Exec=${executables[$counter]}
+                Icon=${logo_names[$counter]}
+                Terminal=true
+                Type=Application
+                StartupNotify=true"\
+                > "$HOME/Desktop/${names_desktop[$counter]}.desktop" && \
+                chmod +x "$HOME/Desktop/${names_desktop[$counter]}.desktop"
+            else
+                echo -e "${RED}Failed to download logo: ${logo_links[$counter]}${NOCOLOR}"
+                kill_processes
+            fi
         fi
-    	((counter++))
+        ((counter++))
     done
 }
 
 ping_wan
-
 find_steam_directory
-
 create_directorys
-
 download_files
-
 make_desktop_sortcuts
 
 echo -e "${GREEN}Updated${NOCOLOR}!."

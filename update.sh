@@ -41,6 +41,7 @@ function make_desktop_sortcut() {
 	counter=0
 
 	for links in "${logo_links[@]}"; do
+        rm "$links"
 		wget -q -O "${logo_names[$counter]}" "$links"
 		((counter++))
 	done

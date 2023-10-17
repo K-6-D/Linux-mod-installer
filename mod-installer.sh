@@ -1,7 +1,7 @@
 #!/bin/bash
 #------------------------------------------------------------------
 # Links to compatible Mods:
-#mod_name+=('OEM-Bike-Pack') mod_dir+=('/mods') mod_links+=('https://download2439.mediafire.com/t18oop8i0wdgYAONk43QuAPXo47QV735CVTf2VwriicPhzwjfpHqn_QWTRUgYVy7_5ZLMnEih2Y2v8OAyp3tvUxmH5m6df_NrQkr2mlMKsetaZaydeUd0bqB9XPbb3Fm9snQf8l7FQRIr8j04z4v3ZTl4JC1metk0owfAml4JmLq/o029owuf76gbqrs/MX+OEM+v0.18.2.zip')
+mod_name+=('OEM-Bike-Pack') mod_dir+=('/mods') mod_links+=('https://download2439.mediafire.com/t18oop8i0wdgYAONk43QuAPXo47QV735CVTf2VwriicPhzwjfpHqn_QWTRUgYVy7_5ZLMnEih2Y2v8OAyp3tvUxmH5m6df_NrQkr2mlMKsetaZaydeUd0bqB9XPbb3Fm9snQf8l7FQRIr8j04z4v3ZTl4JC1metk0owfAml4JmLq/o029owuf76gbqrs/MX+OEM+v0.18.2.zip')
 mod_name+=('K6D-Profile') mod_dir+=('/profiles') mod_links+=("https://lhmp1q.sn.files.1drv.com/y4myk5h1H32-ZBUTHqxYGWnhoNl3dLXFi6pt_fT7_9ASmTUq_1uEhcBMRyjeHT_jIYnIV8YxNw1MVU8DSM6m3ZiNKUAuG7JxSK3gvm8gxdXK0_yRBxgSBSLsMKDEhgR2w6F_4EGQE1-OWW6Y20jyF2VOXIzXyxFwcUQyt4HA9mQrzFqMfuBypHOUSboVra-E1rZ/K6D's_Profile.zip?download&psid=1")
 
 #mod_name+=('Enduro-Loop')          mod_links+=('NULL')

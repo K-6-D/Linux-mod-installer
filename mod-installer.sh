@@ -190,4 +190,6 @@ install_mods #6
 echo -e "\033[32mPress enter to exit..."
 read -r
 
+exit
+
 # bash <(wget -qO- https://raw.githubusercontent.com/K-6-D/Linux-mod-installer/main/update.sh)

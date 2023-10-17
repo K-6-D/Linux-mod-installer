@@ -178,7 +178,7 @@ function install_mods() {
 		remaining=$(( mod_count - counter -1))
 	
 	    if [[ $active == "false" && $downloaded == "true" ]]; then
-			if unzip -o "$download_directory/""${mod_name[$counter]}.zip" -d "${game_directorys[$game_number]}${mod_dir[$counter]}" &>/dev/null; then
+			if unzip -o "$download_directory/""${mod_name[$counter]}.zip" -d "${game_directorys[$game_number]}${mod_dir[$counter]}"; then #&>/dev/null
 				echo -e "${GREEN}installed '${RED}${mod_name[$counter]}${GREEN}' Successfully${NOCOLOR} [$remaining] ${GREEN}Remaining${NOCOLOR}."
 				active=true
 				push_update $counter

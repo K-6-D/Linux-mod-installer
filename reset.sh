@@ -48,7 +48,7 @@ function load_backup() {
 
 	if [[ -e "$mods_backup_directory/$game_name-backup.zip" ]]; then
         rm -r "${game_directorys[$game_number]}/mods/*"
-		zip "${game_directorys[$game_number]}/mods/" "$mods_backup_directory/$game_name-backup.zip" >/dev/null\
+        unzip -o "$mods_backup_directory/$game_name-backup.zip" -d "${game_directorys[$game_number]}/mods"\
 		&& echo -e "${GREEN}Reset finished${NOCOLOR}!."
 		sleep 1
     else

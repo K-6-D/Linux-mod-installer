@@ -1,8 +1,19 @@
 #!/bin/bash
+unset 
 #------------------------------------------------------------------
-# Links to compatible Mods:
-mod_name+=('OEM-Bike-Pack') mod_dir+=('/mods') mod_links+=("https://download2439.mediafire.com/t18oop8i0wdgYAONk43QuAPXo47QV735CVTf2VwriicPhzwjfpHqn_QWTRUgYVy7_5ZLMnEih2Y2v8OAyp3tvUxmH5m6df_NrQkr2mlMKsetaZaydeUd0bqB9XPbb3Fm9snQf8l7FQRIr8j04z4v3ZTl4JC1metk0owfAml4JmLq/o029owuf76gbqrs/MX+OEM+v0.18.2.zip")
-mod_name+=('K6D-Profile') mod_dir+=('/profiles') mod_links+=("https://www.dropbox.com/scl/fi/px0x5skd1q0e3gyt8txie/K6D-Profile.zip?rlkey=79m1y45ilym5ujw4wv8ss32q6&dl=1")
+# Links to compatible Mods: Must be in the correct order.
+mod_name=(
+	'OEM-Bike-Pack' # 0
+	'K6D-Profile' # 1
+) 
+mod_dir=(
+	'/mods' # 0
+	'/profiles' # 1
+) 
+mod_links=(
+	"https://download2439.mediafire.com/t18oop8i0wdgYAONk43QuAPXo47QV735CVTf2VwriicPhzwjfpHqn_QWTRUgYVy7_5ZLMnEih2Y2v8OAyp3tvUxmH5m6df_NrQkr2mlMKsetaZaydeUd0bqB9XPbb3Fm9snQf8l7FQRIr8j04z4v3ZTl4JC1metk0owfAml4JmLq/o029owuf76gbqrs/MX+OEM+v0.18.2.zip" # 0
+	"https://www.dropbox.com/scl/fi/px0x5skd1q0e3gyt8txie/K6D-Profile.zip?rlkey=79m1y45ilym5ujw4wv8ss32q6&dl=1" # 1
+)
 
 #mod_name+=('Enduro-Loop')          mod_links+=('NULL')
 #mod_name+=('Club-MX-compound')     mod_links+=('NULL')
@@ -17,8 +28,10 @@ readonly RED='\033[0;31m'
 readonly GREEN='\033[0;32m'
 readonly NOCOLOR='\033[0m'
 readonly mod_installer_version=0.2
-steam_directorys+=("$HOME/.local/share/Steam/steamapps")
-steam_directorys+=("$HOME/.steam/steam/steamapps")
+steam_directorys=(
+	"$HOME/.local/share/Steam/steamapps"
+	"$HOME/.steam/steam/steamapps"
+)
 
 for i in "${steam_directorys[@]}"; do
 	if [[ -d "$i" ]]; then
@@ -33,12 +46,16 @@ readonly download_directory="$mod_installer_directory/downloaded-mods"
 readonly mod_installer_config="$mod_installer_directory/config.conf"
 readonly mods_list_directory="$mod_installer_directory/installed-mods"
 #-------------------------Game-Directories-------------------------
-game_directory+=("$steam_directory/compatdata/655500/pfx/drive_c/users/steamuser/Documents/PiBoSo/MX Bikes")
+game_directorys=(
+	"$steam_directory/compatdata/655500/pfx/drive_c/users/steamuser/Documents/PiBoSo/MX Bikes"
+)
 #------------------------------------------------------------------
-create_directorys+=("$mod_installer_directory")
-create_directorys+=("$mods_backup_directory")
-create_directorys+=("$download_directory")
-create_directorys+=("$mods_list_directory")
+create_directorys=(
+	"$mod_installer_directory"
+	"$mods_backup_directory"
+	"$download_directory"
+	"$mods_list_directory"
+)
 #------------------------------------------------------------------
 
 function kill_processes() {
@@ -119,7 +136,7 @@ function backup_mods() {
 	if [[ ! -e "$mods_backup_directory/$game_name-backup.zip" ]]; then
 		echo -e "${RED}Backing up game data${NOCOLOR}! This can take some time..."
 		sleep 1
-		zip -r "$mods_backup_directory/$game_name-backup.zip" "${game_directory[$game_number]}/mods" >/dev/null\
+		zip "$mods_backup_directory/$game_name-backup.zip" "${game_directorys[$game_number]}/mods" >/dev/null\
 		&& echo -e "${GREEN}Backup finished${NOCOLOR}!."
 		sleep 1
 	fi
@@ -161,7 +178,7 @@ function install_mods() {
 		remaining=$(( mod_count - counter -1))
 	
 	    if [[ $active == "false" && $downloaded == "true" ]]; then
-			if unzip -o "$download_directory/""${mod_name[$counter]}.zip" -d "${game_directory[$game_number]}${mod_dir[$counter]}" &>/dev/null; then
+			if unzip -o "$download_directory/""${mod_name[$counter]}.zip" -d "${game_directorys[$game_number]}${mod_dir[$counter]}" &>/dev/null; then
 				echo -e "${GREEN}installed '${RED}${mod_name[$counter]}${GREEN}' Successfully${NOCOLOR} [$remaining] ${GREEN}Remaining${NOCOLOR}."
 				active=true
 				push_update $counter
@@ -189,7 +206,7 @@ download_mods #5
 
 install_mods #6
 
-echo -e "\033[32mPress enter to exit..."
+echo -e "${RED}Press enter to exit${NOCOLOR}..."
 read -r
 
 exit

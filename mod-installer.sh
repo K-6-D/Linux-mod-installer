@@ -66,7 +66,6 @@ function kill_processes() {
     kill -- -$$ 2>/dev/null || true
 }
 function basic() {
-	trap kill_subprocesses SIGINT
 	mod_count="${#mod_name[@]}"
 }
 function create_directorys() {
@@ -98,7 +97,7 @@ function create_config_files() {
 	if [[ ! -e "$mods_list_directory/$game_name.list" ]]; then
 	    touch "$mods_list_directory/$game_name.list"
 	    echo "-----------------MOD-LIST-----------------" | tee "$mods_list_directory/$game_name.list" >/dev/null
-	    sed -i '$a'"MOD_NAME: Downloaded,Active" "$mods_list_directory/$game_name.list"
+	    sed -i '$a'"MOD_NAME: Downloaded,Active,Checksum," "$mods_list_directory/$game_name.list"
 	    sed -i '$a'"------------------------------------------" "$mods_list_directory/$game_name.list"
 	
 	fi
@@ -116,7 +115,7 @@ function pull_update() {
 	data_local="$(grep -n "${mod_name[$1]}" "$mods_list_directory/$game_name.list")"
 	
 	if [[ $data_local == "" ]]; then
-		sed -i '$a'"${mod_name[$1]}:,false,false" "$mods_list_directory/$game_name.list"
+		sed -i '$a'"${mod_name[$1]}:,false,false,bad," "$mods_list_directory/$game_name.list"
 		data_local="$(grep -n "${mod_name[$1]}" "$mods_list_directory/$game_name.list")"
 	fi
 	
@@ -127,18 +126,20 @@ function pull_update() {
 	fi
 
 	active="$(echo "$data_local" | cut -f3 -d ',')"
+	checksum="$(echo "$data_local" | cut -f4 -d ',')"
 	push_update "$1"
 }
 function push_update() {
-	sed -i "s/${mod_name[$1]}:.*/${mod_name[$1]}:,$downloaded,$active/" "$mods_list_directory/$game_name.list"
+	sed -i "s/${mod_name[$1]}:.*/${mod_name[$1]}:,$downloaded,$active,$checksum,/" "$mods_list_directory/$game_name.list"
 }
 function backup_mods() {
 	if [[ ! -e "$mods_backup_directory/$game_name-backup.zip" ]]; then
 		echo -e "${RED}Backing up game data${NOCOLOR}! This can take some time..."
-		sleep 1
-		zip "$mods_backup_directory/$game_name-backup.zip" "${game_directorys[$game_number]}/mods" >/dev/null\
-		&& echo -e "${GREEN}Backup finished${NOCOLOR}!."
-		sleep 1
+		pushd "${game_directorys[$game_number]}" || return
+		zip -r "$mods_backup_directory/$game_name-backup.zip" "mods/" >/dev/null\
+		&& sleep 1 && echo -e "${GREEN}Backup finished${NOCOLOR}!."
+		popd || return
+		sleep .5
 	fi
 }
 function download_mods() {
@@ -178,9 +179,17 @@ function install_mods() {
 		remaining=$(( mod_count - counter -1))
 	
 	    if [[ $active == "false" && $downloaded == "true" ]]; then
-			if unzip -o "$download_directory/""${mod_name[$counter]}.zip" -d "${game_directorys[$game_number]}${mod_dir[$counter]}"; then #&>/dev/null
+			echo -e "${GREEN}installing. ${RED}${mod_name[$counter]}"
+			if output=$(unzip -o "$download_directory/""${mod_name[$counter]}.zip" -d "${game_directorys[$game_number]}${mod_dir[$counter]}" 2>&1); then #&>/dev/null
 				echo -e "${GREEN}installed '${RED}${mod_name[$counter]}${GREEN}' Successfully${NOCOLOR} [$remaining] ${GREEN}Remaining${NOCOLOR}."
 				active=true
+				checksum="good"
+				push_update $counter
+			elif [[ $(echo "$output" | grep -oP "bad CRC") == "bad CRC" ]]; then
+				echo "Encountered a checksum error  during unzip operation."
+				echo -e "${GREEN}installed '${RED}${mod_name[$counter]}${GREEN}' With a checksum error.${NOCOLOR} [$remaining] ${GREEN}Remaining${NOCOLOR}."
+				active=true
+				checksum="bad"
 				push_update $counter
 			else
 				echo -e "${RED}Failed to install mod!${NOCOLOR}"
@@ -208,7 +217,5 @@ install_mods #6
 
 echo -e "${RED}Press enter to exit${NOCOLOR}..."
 read -r
-
-exit
 
 # bash <(wget -qO- https://raw.githubusercontent.com/K-6-D/Linux-mod-installer/main/update.sh)

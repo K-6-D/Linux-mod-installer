@@ -58,6 +58,7 @@ readonly mod_installer_update_script_link='https://raw.githubusercontent.com/K-6
 create_directorys+=("$mod_installer_directory")
 #------------------------------------------------------------------
 if ping_wan "show"; then
+    rm "$mod_installer_script"
 	curl -sSL "$mod_installer_script_link" | tr -d '\r' > "$mod_installer_script"
     curl -sSL "$mod_installer_update_script_link" | tr -d '\r' > "$mod_installer_update_script"
     chmod +x "$mod_installer_script"

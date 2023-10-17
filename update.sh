@@ -54,7 +54,7 @@ function make_desktop_sortcuts() {
 
 	#------------------------------
 	echo "[Desktop Entry]
-	Name=Linux Mod Installer
+	Name=Mod Installer
 	Exec=${executables[0]}
 	Icon=${logo_names[0]}
 	Terminal=true
@@ -64,24 +64,24 @@ function make_desktop_sortcuts() {
 	chmod +x "$HOME/Desktop/Deck-installer.desktop"
 	#------------------------------
 	echo "[Desktop Entry]
-	Name=Linux Mod Installer Reset
+	Name=Reset
 	Exec=${executables[1]}
 	Icon=${logo_names[1]}
 	Terminal=true
 	Type=Application
 	StartupNotify=true"\
-	> "$HOME/Desktop/Deck-installer-update.desktop" &&\
-	chmod +x "$HOME/Desktop/Deck-installer-update.desktop"
+	> "$HOME/Desktop/reset.desktop" &&\
+	chmod +x "$HOME/Desktop/reset.desktop"
 	#------------------------------
 	echo "[Desktop Entry]
-	Name=Linux Mod Installer Update
+	Name=Update
 	Exec=${executables[2]}
 	Icon=${logo_names[2]}
 	Terminal=true
 	Type=Application
 	StartupNotify=true"\
-	> "$HOME/Desktop/Deck-installer-update.desktop" &&\
-	chmod +x "$HOME/Desktop/Deck-installer-update.desktop"
+	> "$HOME/Desktop/update.desktop" &&\
+	chmod +x "$HOME/Desktop/update.desktop"
 	#------------------------------
 
 }
@@ -109,8 +109,9 @@ logo_names+=("$mod_images_directory/update-logo.png") logo_links+=('https://www.
 counter=0
 
 for links in "${github_links[@]}"; do
-    curl -sSL "$links" | tr -d '\r' > "${executables[$counter]}"
+    curl -sSL "$links" >"${executables[$counter]}"
     chmod +x "${executables[$counter]}"
+    ((counter++))
 done
 
 make_desktop_sortcuts

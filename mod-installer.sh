@@ -55,6 +55,7 @@ kill_processes() {
 }
 basic() {
 	trap kill_subprocesses SIGINT
+	mod_count="${#mod_name[@]}"
 }
 create_directorys() {
 	for i in "${create_directorys[@]}"; do
@@ -153,6 +154,7 @@ backup_mods() {
 		echo -e "${RED}Backing up game data${NOCOLOR}! This can take some time.!"
 		zip -r "$mods_backup_directory/$game_name-backup.zip" "${game_directory[$game_number]}" >/dev/null\
 		&& echo -e "${GREEN}Backup finished${NOCOLOR}!."
+		sleep 1
 	fi
 }
 download_mods() {
@@ -160,7 +162,7 @@ download_mods() {
 	
 	for link in "${mod_links[@]}"; do
 		pull_update $counter
-		remaining=$((${#mod_name[@]} - $counter -1))
+		remaining=$(( mod_count - counter -1))
 	
 	    if [[ $downloaded == "false" ]]; then
 			if ! ping_wan "silent"; then
@@ -168,9 +170,8 @@ download_mods() {
 				kill_processes
 			fi
 
-
 		    if wget -q --show-progress --no-check-certificate -O "$download_directory/""${mod_name[$counter]}.zip" "$link"; then
-	    		echo -e "${GREEN}Download ${RED}'${mod_name[$counter]}'${NOCOLOR} [$remaining] ${GREEN}Remaining${NOCOLOR}."
+	    		echo -e "${GREEN}Downloded ${RED}'${mod_name[$counter]}'${NOCOLOR} [$remaining] ${GREEN}Remaining${NOCOLOR}."
 	    		downloaded=true
 				push_update $counter
 			else
@@ -190,7 +191,7 @@ install_mods() {
 	
 	for link in "${mod_links[@]}"; do
 		pull_update $counter
-		remaining=$((${#mod_name[@]} - $counter -1))
+		remaining=$(( mod_count - counter -1))
 	
 	    if [[ $active == "false" && $downloaded == "true" ]]; then
 			if unzip -o "$download_directory/""${mod_name[$counter]}.zip" -d "${game_directory[$game_number]}" &>/dev/null; then

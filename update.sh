@@ -76,7 +76,6 @@ function download_files() {
 
 }
 function make_desktop_sortcuts() {
-    counter=0
     logo_names=(
         "$mod_images_directory/logo.png"      
         "$mod_images_directory/reset-logo.png"
@@ -87,42 +86,28 @@ function make_desktop_sortcuts() {
         'https://images.squarespace-cdn.com/content/54b55e28e4b04d469d0fc8eb/1504188257429-JM5TDS0REGART87DKJ8P/reset+button?format=1500w&content-type=image%2Fjpeg'
         'https://www.stpaulschool.ca/wp-content/uploads/2021/01/New-Update.png'
     )
-
+    names_desktop=(
+        'Mod-installer'
+        'reset'
+        'update'
+    )
+    counter=0
+    
     for links in "${logo_links[@]}"; do
     	wget -q -O "${logo_names[$counter]}" "$links"
+
+	    echo "[Desktop Entry]
+	    Name=${names_desktop[$counter]}
+	    Exec=${executables[$counter]}
+	    Icon=${logo_names[$counter]}
+	    Terminal=true
+	    Type=Application
+	    StartupNotify=true"\
+	    > "$HOME/Desktop/${names_desktop[$counter]}.desktop" &&\
+	    chmod +x "$HOME/Desktop/${names_desktop[$counter]}.desktop"
+
     	((counter++))
     done
-	#------------------------------
-	echo "[Desktop Entry]
-	Name=Mod Installer
-	Exec=${executables[0]}
-	Icon=${logo_names[0]}
-	Terminal=true
-	Type=Application
-	StartupNotify=true"\
-	> "$HOME/Desktop/Deck-installer.desktop" &&\
-	chmod +x "$HOME/Desktop/Deck-installer.desktop"
-	#------------------------------
-	echo "[Desktop Entry]
-	Name=Reset
-	Exec=${executables[1]}
-	Icon=${logo_names[1]}
-	Terminal=true
-	Type=Application
-	StartupNotify=true"\
-	> "$HOME/Desktop/reset.desktop" &&\
-	chmod +x "$HOME/Desktop/reset.desktop"
-	#------------------------------
-	echo "[Desktop Entry]
-	Name=Update
-	Exec=${executables[2]}
-	Icon=${logo_names[2]}
-	Terminal=true
-	Type=Application
-	StartupNotify=true"\
-	> "$HOME/Desktop/update.desktop" &&\
-	chmod +x "$HOME/Desktop/update.desktop"
-	#------------------------------
 }
 
 ping_wan
@@ -135,7 +120,7 @@ download_files
 
 make_desktop_sortcuts
 
-echo -e "${GREEN}Updated${NOCOLOR}!."
-echo -e "${GREEN}Press enter to Continue${NOCOLOR}..."
-read -r
-bash "${executables[0]}" && exit
+#echo -e "${GREEN}Updated${NOCOLOR}!."
+#echo -e "${GREEN}Press enter to Continue${NOCOLOR}..."
+#read -r
+#bash "${executables[0]}" && exit

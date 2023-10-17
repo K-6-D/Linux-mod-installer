@@ -1,1 +1,1 @@
-# steam-deck-mod-installer
+# Linux-mod-installer

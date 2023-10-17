@@ -33,11 +33,10 @@ readonly mod_images_directory="$mod_installer_directory/images"
 readonly download_directory="$mod_installer_directory/downloaded-mods"
 readonly mod_installer_config="$mod_installer_directory/config.conf"
 readonly mods_list_directory="$mod_installer_directory/installed-mods"
-#-------------------------Game-Directories-------------------------
-logo_names+=("$mod_images_directory/logo.png") && logo_links+=('https://play-lh.googleusercontent.com/aXLEJhVDHUHhW5ywu5p6vdcmczyzuk_0Vl1eVwHfTq6j0LQ4PkJb3lFWAJe4rHgYIz0')
+#------------------------------Logos-------------------------------
+logo_names+=("$mod_images_directory/logo.png") && logo_links+=('https://t4.ftcdn.net/jpg/01/21/22/57/360_F_121225745_6MScSAbSWYSWlRsPJonDPPDcp84BrdKo.jpg')
 logo_names+=("$mod_images_directory/reset-logo.png") && logo_links+=('https://images.squarespace-cdn.com/content/54b55e28e4b04d469d0fc8eb/1504188257429-JM5TDS0REGART87DKJ8P/reset+button?format=1500w&content-type=image%2Fjpeg')
 logo_names+=("$mod_images_directory/update-logo.png") && logo_links+=('https://www.stpaulschool.ca/wp-content/uploads/2021/01/New-Update.png')
-
 #-------------------------Game-Directories-------------------------
 game_directory+=("$steam_directory/compatdata/655500/pfx/drive_c/users/steamuser/Documents/PiBoSo/MX Bikes/mods")
 #------------------------------------------------------------------

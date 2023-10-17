@@ -57,7 +57,7 @@ function create_directorys() {
 function download_files() {
     github_links=(
         'https://raw.githubusercontent.com/K-6-D/Linux-mod-installer/main/mod-installer.sh'
-        'https://raw.githubusercontent.com/K-6-D/Linux-mod-installer/main/update.sh'
+        'https://raw.githubusercontent.com/K-6-D/Linux-mod-installer/main/reset.sh'
         'https://raw.githubusercontent.com/K-6-D/Linux-mod-installer/main/update.sh'
     )
     executables=(
@@ -87,7 +87,7 @@ function make_desktop_sortcuts() {
         'https://www.stpaulschool.ca/wp-content/uploads/2021/01/New-Update.png'
     )
     names_desktop=(
-        'Mod-installer'
+        'mod-installer'
         'reset'
         'update'
     )
@@ -120,7 +120,7 @@ download_files
 
 make_desktop_sortcuts
 
-#echo -e "${GREEN}Updated${NOCOLOR}!."
-#echo -e "${GREEN}Press enter to Continue${NOCOLOR}..."
-#read -r
-#bash "${executables[0]}" && exit
+echo -e "${GREEN}Updated${NOCOLOR}!."
+echo -e "${GREEN}Press enter to Continue${NOCOLOR}..."
+read -r
+bash "${executables[0]}" && exit

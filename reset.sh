@@ -38,7 +38,7 @@ function find_steam_directory() {
     done
 
     mod_installer_directory="$steam_directory/mod_installer"
-    mod_installer_directory="$steam_directory/mod_installer"readonly mods_backup_directory="$mod_installer_directory/backups"
+    mods_backup_directory="$mod_installer_directory/backups"
 
 }
 function load_backup() {
@@ -47,7 +47,7 @@ function load_backup() {
     )
 
 	if [[ -e "$mods_backup_directory/$game_name-backup.zip" ]]; then
-        rm -r "${game_directorys[$game_number]}/mods"/*
+        rm -r "${game_directorys[$game_number]}/mods/*"
 		zip "${game_directorys[$game_number]}/mods/" "$mods_backup_directory/$game_name-backup.zip" >/dev/null\
 		&& echo -e "${GREEN}Reset finished${NOCOLOR}!."
 		sleep 1

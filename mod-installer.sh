@@ -119,7 +119,7 @@ function backup_mods() {
 	if [[ ! -e "$mods_backup_directory/$game_name-backup.zip" ]]; then
 		echo -e "${RED}Backing up game data${NOCOLOR}! This can take some time..."
 		sleep 1
-		zip -r "$mods_backup_directory/$game_name-backup.zip" "${game_directory[$game_number]}" >/dev/null\
+		zip -r "$mods_backup_directory/$game_name-backup.zip" "${game_directory[$game_number]}/mods" >/dev/null\
 		&& echo -e "${GREEN}Backup finished${NOCOLOR}!."
 		sleep 1
 	fi

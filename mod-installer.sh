@@ -26,17 +26,10 @@ for i in "${steam_directorys[@]}"; do
 done
 
 readonly mod_installer_directory="$steam_directory/mod_installer"
-readonly mod_installer_update_script="$mod_installer_directory/update.sh"
-readonly mod_installer_script="$mod_installer_directory/run.sh"
 readonly mods_backup_directory="$mod_installer_directory/backups"
-readonly mod_images_directory="$mod_installer_directory/images"
 readonly download_directory="$mod_installer_directory/downloaded-mods"
 readonly mod_installer_config="$mod_installer_directory/config.conf"
 readonly mods_list_directory="$mod_installer_directory/installed-mods"
-#------------------------------Logos-------------------------------
-logo_names+=("$mod_images_directory/logo.png") && logo_links+=('https://t4.ftcdn.net/jpg/01/21/22/57/360_F_121225745_6MScSAbSWYSWlRsPJonDPPDcp84BrdKo.jpg')
-logo_names+=("$mod_images_directory/reset-logo.png") && logo_links+=('https://images.squarespace-cdn.com/content/54b55e28e4b04d469d0fc8eb/1504188257429-JM5TDS0REGART87DKJ8P/reset+button?format=1500w&content-type=image%2Fjpeg')
-logo_names+=("$mod_images_directory/update-logo.png") && logo_links+=('https://www.stpaulschool.ca/wp-content/uploads/2021/01/New-Update.png')
 #-------------------------Game-Directories-------------------------
 game_directory+=("$steam_directory/compatdata/655500/pfx/drive_c/users/steamuser/Documents/PiBoSo/MX Bikes/mods")
 #------------------------------------------------------------------
@@ -44,7 +37,6 @@ create_directorys+=("$mod_installer_directory")
 create_directorys+=("$mods_backup_directory")
 create_directorys+=("$download_directory")
 create_directorys+=("$mods_list_directory")
-create_directorys+=("$mod_images_directory")
 #------------------------------------------------------------------
 
 function kill_processes() {
@@ -73,40 +65,6 @@ function create_directorys() {
 	    fi
 	    sleep .2
 	done
-
-	make_desktop_sortcut
-}
-function make_desktop_sortcut() {
-	counter=0
-
-	for links in "${logo_links[@]}"; do
-		wget -q -O "${logo_names[$counter]}" "$links"
-		((counter++))
-	done
-
-	#------------------------------
-	echo "[Desktop Entry]
-	Name=Linux Mod Installer
-	Exec=$mod_installer_script
-	Icon=${logo_names[0]}
-	Terminal=true
-	Type=Application
-	StartupNotify=true"\
-	> "$HOME/Desktop/Deck-installer.desktop" &&\
-	chmod +x "$HOME/Desktop/Deck-installer.desktop"
-	#------------------------------
-	
-	#------------------------------
-	echo "[Desktop Entry]
-	Name=Linux Mod Installer Update
-	Exec=$mod_installer_update_script
-	Icon=${logo_names[2]}
-	Terminal=true
-	Type=Application
-	StartupNotify=true"\
-	> "$HOME/Desktop/Deck-installer-update.desktop" &&\
-	chmod +x "$HOME/Desktop/Deck-installer-update.desktop"
-	#------------------------------
 }
 function create_config_files() {
 	if [[ ! -e "$mod_installer_config" ]]; then
@@ -230,4 +188,4 @@ install_mods #6
 echo -e "\033[32mPress enter to exit..."
 read -r
 
-# bash <(wget -qO- https://raw.githubusercontent.com/K-6-D/Linux-mod-installer/main/update.sh | tr -d '\r')
+# bash <(wget -qO- https://raw.githubusercontent.com/K-6-D/Linux-mod-installer/main/update.sh)

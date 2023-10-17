@@ -105,7 +105,7 @@ function make_desktop_sortcut() {
 	Terminal=true
 	Type=Application
 	StartupNotify=true"\
-	> "$HOME/Desktop/Deck-installer.desktop" &&\
+	> "$HOME/Desktop/Deck-installer-update.desktop" &&\
 	chmod +x "$HOME/Desktop/Deck-installer-update.desktop"
 	#------------------------------
 }

@@ -99,14 +99,14 @@ function make_desktop_sortcut() {
 	
 	#------------------------------
 	echo "[Desktop Entry]
-	Name=Linux Mod Installer
+	Name=Linux Mod Installer Update
 	Exec=$mod_installer_update_script
 	Icon=${logo_names[2]}
 	Terminal=true
 	Type=Application
 	StartupNotify=true"\
 	> "$HOME/Desktop/Deck-installer.desktop" &&\
-	chmod +x "$HOME/Desktop/Deck-installer.desktop"
+	chmod +x "$HOME/Desktop/Deck-installer-update.desktop"
 	#------------------------------
 }
 function create_config_files() {

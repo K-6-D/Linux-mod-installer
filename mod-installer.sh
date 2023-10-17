@@ -26,8 +26,8 @@ for i in "${steam_directorys[@]}"; do
 done
 
 readonly mod_installer_directory="$steam_directory/mod_installer"
+readonly mod_installer_update_script="$mod_installer_directory/update.sh"
 readonly mod_installer_script="$mod_installer_directory/run.sh"
-readonly mod_installer_script_link='https://raw.githubusercontent.com/K-6-D/Linux-mod-installer/main/mod-installer.sh'
 readonly mods_backup_directory="$mod_installer_directory/backups"
 readonly mod_images_directory="$mod_installer_directory/images"
 readonly download_directory="$mod_installer_directory/downloaded-mods"
@@ -36,6 +36,8 @@ readonly mods_list_directory="$mod_installer_directory/installed-mods"
 #-------------------------Game-Directories-------------------------
 logo_names+=("$mod_images_directory/logo.png") && logo_links+=('https://play-lh.googleusercontent.com/aXLEJhVDHUHhW5ywu5p6vdcmczyzuk_0Vl1eVwHfTq6j0LQ4PkJb3lFWAJe4rHgYIz0')
 logo_names+=("$mod_images_directory/reset-logo.png") && logo_links+=('https://images.squarespace-cdn.com/content/54b55e28e4b04d469d0fc8eb/1504188257429-JM5TDS0REGART87DKJ8P/reset+button?format=1500w&content-type=image%2Fjpeg')
+logo_names+=("$mod_images_directory/update-logo.png") && logo_links+=('https://www.stpaulschool.ca/wp-content/uploads/2021/01/New-Update.png')
+
 #-------------------------Game-Directories-------------------------
 game_directory+=("$steam_directory/compatdata/655500/pfx/drive_c/users/steamuser/Documents/PiBoSo/MX Bikes/mods")
 #------------------------------------------------------------------
@@ -46,18 +48,18 @@ create_directorys+=("$mods_list_directory")
 create_directorys+=("$mod_images_directory")
 #------------------------------------------------------------------
 
-kill_processes() {
+function kill_processes() {
 	echo -e "\033[32mPress enter to exit..."
 	read -r
     echo -e "${RED}killed...${NOCOLOR}"
     sleep .1
     kill -- -$$ 2>/dev/null || true
 }
-basic() {
+function basic() {
 	trap kill_subprocesses SIGINT
 	mod_count="${#mod_name[@]}"
 }
-create_directorys() {
+function create_directorys() {
 	for i in "${create_directorys[@]}"; do
 		if [[ ! -d "$i" ]]; then
 			if mkdir "$i"; then
@@ -75,14 +77,7 @@ create_directorys() {
 
 	make_desktop_sortcut
 }
-make_desktop_sortcut() {
-	if ! ping_wan "silent"; then
-		cp "$PWD/$0" "$mod_installer_script" 2>/dev/null || true
-	else
-		curl -sSL "$mod_installer_script_link" | tr -d '\r' > "$mod_installer_script"
-	fi
-
-	chmod +x "$mod_installer_script"
+function make_desktop_sortcut() {
 	counter=0
 
 	for links in "${logo_links[@]}"; do
@@ -92,7 +87,7 @@ make_desktop_sortcut() {
 
 	#------------------------------
 	echo "[Desktop Entry]
-	Name=Deck Mod Installer
+	Name=Linux Mod Installer
 	Exec=$mod_installer_script
 	Icon=${logo_names[0]}
 	Terminal=true
@@ -101,8 +96,20 @@ make_desktop_sortcut() {
 	> "$HOME/Desktop/Deck-installer.desktop" &&\
 	chmod +x "$HOME/Desktop/Deck-installer.desktop"
 	#------------------------------
+	
+	#------------------------------
+	echo "[Desktop Entry]
+	Name=Linux Mod Installer
+	Exec=$mod_installer_update_script
+	Icon=${logo_names[2]}
+	Terminal=true
+	Type=Application
+	StartupNotify=true"\
+	> "$HOME/Desktop/Deck-installer.desktop" &&\
+	chmod +x "$HOME/Desktop/Deck-installer.desktop"
+	#------------------------------
 }
-create_config_files() {
+function create_config_files() {
 	if [[ ! -e "$mod_installer_config" ]]; then
 	    touch "$mod_installer_config"
 	    echo "--------------MOD-INSTALLER--------------" | tee "$mod_installer_config" >/dev/null
@@ -118,9 +125,7 @@ create_config_files() {
 	
 	fi
 }
-ping_wan() {
-    [[ "$1" = "" ]] && local 1="show"
-
+function ping_wan() {
     if wget --spider --quiet "https://www.cloudflare.com/" &>/dev/null; then
         [[ "$1" != "silent" ]] && echo -e "${GREEN}Internet is up${NOCOLOR}"
         return 0
@@ -129,7 +134,7 @@ ping_wan() {
         return 1
     fi
 }
-pull_update() {
+function pull_update() {
 	data_local="$(grep -n "${mod_name[$1]}" "$mods_list_directory/$game_name.list")"
 	
 	if [[ $data_local == "" ]]; then
@@ -146,18 +151,19 @@ pull_update() {
 	active="$(echo "$data_local" | cut -f3 -d ',')"
 	push_update "$1"
 }
-push_update() {
+function push_update() {
 	sed -i "s/${mod_name[$1]}:.*/${mod_name[$1]}:,$downloaded,$active/" "$mods_list_directory/$game_name.list"
 }
-backup_mods() {
+function backup_mods() {
 	if [[ ! -e "$mods_backup_directory/$game_name-backup.zip" ]]; then
-		echo -e "${RED}Backing up game data${NOCOLOR}! This can take some time.!"
+		echo -e "${RED}Backing up game data${NOCOLOR}! This can take some time..."
+		sleep 1
 		zip -r "$mods_backup_directory/$game_name-backup.zip" "${game_directory[$game_number]}" >/dev/null\
 		&& echo -e "${GREEN}Backup finished${NOCOLOR}!."
 		sleep 1
 	fi
 }
-download_mods() {
+function download_mods() {
 	counter=0
 	
 	for link in "${mod_links[@]}"; do
@@ -186,7 +192,7 @@ download_mods() {
 
 	echo ""
 }
-install_mods() {
+function install_mods() {
 	counter=0
 	
 	for link in "${mod_links[@]}"; do
@@ -225,4 +231,4 @@ install_mods #6
 echo -e "\033[32mPress enter to exit..."
 read -r
 
-# bash <(wget -qO- https://raw.githubusercontent.com/K-6-D/Linux-mod-installer/main/mod-installer.sh | tr -d '\r')
+# bash <(wget -qO- https://raw.githubusercontent.com/K-6-D/Linux-mod-installer/main/update.sh | tr -d '\r')

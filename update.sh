@@ -69,7 +69,7 @@ function download_files() {
     counter=0
 
     for links in "${github_links[@]}"; do
-        wget -q -O "${executables[$counter]}" "$links"
+        curl -sSL "$links" > "${executables[$counter]}"
         chmod +x "${executables[counter]}"
         (( counter++ ))
     done

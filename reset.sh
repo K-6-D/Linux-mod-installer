@@ -38,30 +38,23 @@ function find_steam_directory() {
     done
 
     mod_installer_directory="$steam_directory/mod_installer"
-    download_directory="$mod_installer_directory/downloaded-mods"
     mods_backup_directory="$mod_installer_directory/backups"
-}
-function pull_update() {
-	data_local="$(grep -n "${mod_name[$1]}" "$mods_list_directory/$game_name.list")"
-	
-	if [[ $data_local == "" ]]; then
-		sed -i '$a'"${mod_name[$1]}:,false,false,bad," "$mods_list_directory/$game_name.list"
-		data_local="$(grep -n "${mod_name[$1]}" "$mods_list_directory/$game_name.list")"
-	fi
-	
-	if [[ -e "$download_directory/${mod_name[$1]}.zip" && $(echo "$data_local" | cut -f2 -d ',') == "true" ]]; then
-		downloaded=true
-	else
-		downloaded=false
-	fi
+    readonly mods_list_directory="$mod_installer_directory/installed-mods"
 
-	active="$(echo "$data_local" | cut -f3 -d ',')"
-	checksum="$(echo "$data_local" | cut -f4 -d ',')"
-	push_update "$1"
 }
+
 function push_update() {
-	sed -i "s/${mod_name[$1]}:.*/${mod_name[$1]}:,$downloaded,$active,$checksum,/" "$mods_list_directory/$game_name.list"
+    mapfile -t lines < "$mods_list_directory/$game_name.list"
+    for i in "${lines[@]}"; do
+        mod_name="$(echo "$i" | cut -f1 -d ',')"
+        downloaded="$(echo "$i" | cut -f2 -d ',')"
+        active="false"
+        checksum="$(echo "$i" | cut -f4 -d ',')"
+
+        sed -i "s/$mod_name.*/ $mod_name:,$downloaded,$active,$checksum,/" "$mods_list_directory/$game_name.list"
+    done
 }
+
 function load_backup() {
     pull_update ""
     game_directorys=(

@@ -204,15 +204,9 @@ function install_mods() {
 }
 
 basic #1
-
 create_directorys #2
-
 create_config_files #3
-
 backup_mods #4
-
 download_mods #5
-
 install_mods #6
-
 kill_processes #7

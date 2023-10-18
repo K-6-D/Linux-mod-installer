@@ -119,11 +119,10 @@ function make_desktop_sortcuts() {
     done
 }
 
-ping_wan
-find_steam_directory
-create_directorys
-download_files
-make_desktop_sortcuts
-
-echo -e "${GREEN}Updated${NOCOLOR}!."
-kill_processes
+ping_wan #1
+find_steam_directory #2
+create_directorys #3
+download_files #4
+make_desktop_sortcuts #5
+echo -e "${GREEN}Updated${NOCOLOR}!." #6
+kill_processes #7

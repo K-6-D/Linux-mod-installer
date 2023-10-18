@@ -215,7 +215,4 @@ download_mods #5
 
 install_mods #6
 
-echo -e "${RED}Press enter to exit${NOCOLOR}."
-read -r
-
-# bash <(wget -qO- https://raw.githubusercontent.com/K-6-D/Linux-mod-installer/main/update.sh)
+kill_processes #7

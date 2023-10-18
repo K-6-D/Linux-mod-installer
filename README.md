@@ -6,7 +6,7 @@ How to install.
 <br />
 Step 0 - Have MX-Bakes installed.
 <br />
-Step 1 - run this in the Terminal: bash <(wget -qO- https://raw.githubusercontent.com/K-6-D/Linux-mod-installer/main/update.sh)
+Step 1 - run this in the Terminal: bash <(curl -s https://raw.githubusercontent.com/K-6-D/Linux-mod-installer/main/update.sh)
 <br />
 Step 2 - Press enter.
 <br />

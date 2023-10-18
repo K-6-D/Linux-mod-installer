@@ -63,8 +63,9 @@ function load_backup() {
 
 	if [[ -e "$mods_backup_directory/$game_name-backup.zip" ]]; then
         rm -r "${game_directorys[$game_number]}/mods"
-        unzip -o "$mods_backup_directory/$game_name-backup.zip" -d "${game_directorys[$game_number]}" >/dev/null\
-		&& echo -e "${GREEN}Reset finished${NOCOLOR}!."
+        unzip -o "$mods_backup_directory/$game_name-backup.zip" -d "${game_directorys[$game_number]}" >/dev/null
+        push_update
+		echo -e "${GREEN}Reset finished${NOCOLOR}!."
 		sleep 1
     else
         echo -e "${RED}No Game Backup Found${NOCOLOR}!!."

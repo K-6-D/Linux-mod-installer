@@ -44,19 +44,18 @@ function find_steam_directory() {
 }
 
 function push_update() {
-    mapfile -t lines < "$mods_list_directory/$game_name.list"
+    mapfile -t lines < <(tail -n +4 "$mods_list_directory/$game_name.list")
     for i in "${lines[@]}"; do
         mod_name="$(echo "$i" | cut -f1 -d ',')"
         downloaded="$(echo "$i" | cut -f2 -d ',')"
         active="false"
         checksum="$(echo "$i" | cut -f4 -d ',')"
 
-        sed -i "s/$mod_name.*/ $mod_name:,$downloaded,$active,$checksum,/" "$mods_list_directory/$game_name.list"
+        sed -i "s/$mod_name.*/$mod_name,$downloaded,$active,$checksum,/" "$mods_list_directory/$game_name.list"
     done
 }
 
 function load_backup() {
-    pull_update ""
     game_directorys=(
 	    "$steam_directory/compatdata/655500/pfx/drive_c/users/steamuser/Documents/PiBoSo/MX Bikes"
     )

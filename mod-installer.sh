@@ -135,7 +135,7 @@ function push_update() {
 function backup_mods() {
 	if [[ ! -e "$mods_backup_directory/$game_name-backup.zip" ]]; then
 		echo -e "${RED}Backing up game data${NOCOLOR}! This can take some time..."
-		pushd "${game_directorys[$game_number]}" || return
+		pushd "${game_directorys[$game_number]}" || return >/dev/null
 		zip -r "$mods_backup_directory/$game_name-backup.zip" "mods/" >/dev/null\
 		&& sleep 1 && echo -e "${GREEN}Backup finished${NOCOLOR}!."
 		popd || return

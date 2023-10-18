@@ -21,7 +21,7 @@ function get_game_number() {
     esac
 }
 function kill_processes() {
-	echo -e "\033[32mPress enter to exit..."
+	echo -e "${GREEN}Press enter to exit${NOCOLOR}..."
 	read -r
     echo -e "${RED}killed...${NOCOLOR}"
     sleep .1

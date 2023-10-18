@@ -126,6 +126,4 @@ download_files
 make_desktop_sortcuts
 
 echo -e "${GREEN}Updated${NOCOLOR}!."
-echo -e "${GREEN}Press enter to Continue${NOCOLOR}..."
-read -r
-bash "${executables[0]}" && exit
+kill_processes

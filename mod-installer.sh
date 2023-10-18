@@ -197,7 +197,7 @@ function install_mods() {
 				kill_processes
 			fi
 		elif [[ $active == "true" ]]; then
-			echo -e "${RED}'${mod_name[$counter]}' ${GREEN}Is already Installed${NOCOLOR}!."
+			echo -e "${NOCOLOR}'${RED}${mod_name[$counter]}${NOCOLOR}' ${GREEN}Is already Installed${NOCOLOR}!."
 	    fi
 		((counter++))
 	done

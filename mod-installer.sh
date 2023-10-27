@@ -161,7 +161,7 @@ function download_mods() {
 				kill_processes
 			fi
 			
-			echo -e "${GREEN}Downloading ${NOCOLOR}'${RED}${mod_name[$counter]}${NOCOLOR}' "
+			echo -e "${GREEN}Downloading ${NOCOLOR}'${RED}${mod_name[$counter]}${NOCOLOR}'"
 
 		    if wget -q --show-progress --no-check-certificate -O "$download_directory/""${mod_name[$counter]}.zip" "$link"; then
 	    		echo -e "${GREEN}Downloded ${RED}'${mod_name[$counter]}'${NOCOLOR} [$remaining] ${GREEN}Remaining${NOCOLOR}."
@@ -187,7 +187,7 @@ function install_mods() {
 		remaining=$(( mod_count - counter -1))
 	
 	    if [[ $active == "false" && $downloaded == "true" ]]; then
-			echo -e "${GREEN}installing ${NOCOLOR}'${RED}${mod_name[$counter]}${NOCOLOR}' "
+			echo -e "${GREEN}installing ${NOCOLOR}'${RED}${mod_name[$counter]}${NOCOLOR}'"
 			if output=$(unzip -o "$download_directory/""${mod_name[$counter]}.zip" -d "${game_directorys[$game_number]}${mod_dir[$counter]}" 2>&1); then #&>/dev/null
 				echo -e "${GREEN}installed '${RED}${mod_name[$counter]}${GREEN}' Successfully${NOCOLOR} [$remaining] ${GREEN}Remaining${NOCOLOR}."
 				active=true

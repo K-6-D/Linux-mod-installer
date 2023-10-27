@@ -63,7 +63,7 @@ function kill_processes() {
 	read -r
     echo -e "${RED}killed...${NOCOLOR}"
     sleep .1
-    kill -- -$$ 2>/dev/null || true
+    exit
 }
 function basic() {
 	mod_count="${#mod_name[@]}"

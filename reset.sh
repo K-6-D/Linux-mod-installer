@@ -25,7 +25,7 @@ function kill_processes() {
 	read -r
     echo -e "${RED}killed...${NOCOLOR}"
     sleep .1
-    kill -- -$$ 2>/dev/null || true
+    exit
 }
 function find_steam_directory() {
     steam_directorys=("$HOME/.local/share/Steam/steamapps" "$HOME/.steam/steam/steamapps")

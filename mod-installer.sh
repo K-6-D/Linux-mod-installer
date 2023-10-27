@@ -1,6 +1,7 @@
 #!/bin/bash
 # Links to compatible Mods: Must be in the correct order.
 mod_name=(
+	'Jurassic-Track'
 	'Supermoto-OEM'
 	'Motofactory-Compound'
 	'Club-MX-compound'
@@ -16,9 +17,11 @@ mod_dir=(
 	'/mods'
 	'/mods'
 	'/mods'
+	'/mods'
 #	'/profiles'
 ) 
 mod_links=(
+	"https://lhm81q.sn.files.1drv.com/y4mVyHZI78T_Lu_dmlhrpRjYcd7VEsVhlF7k_F0wo-3OZ2GtJIDTtIa3lixLm-bk_4SsKSIM0EA4_2XpRFVcm_gLbK9RJJ3tI_GMlHmoUH3CqWis3MB64hGk3vHwLlGbyMY7q2FXntDLa9oQuhBcMA685dYcv0lj6U69RuSJFHWg0LC7SIfdxI2bukSvfdTQZaH/Verified-G0-V1-Jurassic-Track.zip?download&psid=1"
 	"https://pf6umg.sn.files.1drv.com/y4moyuukdlG_vSsmz2kGS4I_DVma2BxPca9umxAlmrke76M4y5TERA5VZecFx35suxKRPFbIm0B7BKycbVxLv51THgazCqurG3BafMT13Z1nAlqU1_JJrH-kgnJA2QvKbljkJhaPDz0cEkIsbe53ElNDtLHx4N1PO2gdZzorxUlTdc7vqez-5UHFNCjfFVh8EPv/Verified-G0-V1-SMOEM-v0.15.1.zip?download&psid=1"
 	"https://lpjjdw.sn.files.1drv.com/y4mSQ8JczP-7yoJr_hDW3ZotPkRxjlmcEsk-W935-vD8psEv3sgACmZegc_N8bv4VzK_lPHfvyD4ssI9uCym7-KQHCFmDDOdbzlNqoQ2EibJtgIjP330gDTuc8O9UJX0BIJYzWdCS-DulMc_O4PH288FnQya_Dx17CkMXLAfe3_ynUan4vxpE8d7Rp4XYHMjxdr/Verified-G0-V1-Motofactory-Compound.zip?download&psid=1"
 	"https://ylylgg.sn.files.1drv.com/y4mCW4ZKCMyGP_xmf0iRCdHDggNlX6sX8RWW2Bo3WPeWKOqC_ah8ktSXCtXYAOnY6loxh7oQN6Iz6vXjxOE0LOlBMNPXGQOM5H_YqSUQSGEWyAHrAIZyCoCJBTN6Zsc9YdS4IOzvB1q6QEQkA_yJgjOT0S0Ygl06OUCe2HSluYsPurfy_CJLzAGF69L68X8upd4/Verified-G0-V1-Club-MX.zip?download&psid=1"

@@ -12,7 +12,7 @@ function kill_processes() {
 	read -r
     echo -e "${RED}killed...${NOCOLOR}"
     sleep .1
-    kill -- -$$ 2>/dev/null || true
+    exit
 }
 function ping_wan() {
     if wget --spider --quiet "https://www.cloudflare.com/" &>/dev/null; then

@@ -7,7 +7,7 @@ mod_name=(
 	'Motofactory-Compound'
 	'Club-MX-compound'
 	'Enduro-Loop'
-	'Supermoto-OEM'
+	'Enduro-Bike-Pack'
 	'OEM-Bike-Pack'
 #	'K6D-Profile'
 ) 

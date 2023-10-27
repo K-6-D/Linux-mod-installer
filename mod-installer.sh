@@ -1,6 +1,4 @@
 #!/bin/bash
-unset 
-#------------------------------------------------------------------
 # Links to compatible Mods: Must be in the correct order.
 mod_name=(
 	'Supermoto-OEM'
@@ -30,13 +28,6 @@ mod_links=(
 #	"https://www.dropbox.com/scl/fi/px0x5skd1q0e3gyt8txie/K6D-Profile.zip?rlkey=79m1y45ilym5ujw4wv8ss32q6&dl=1"
 )
 
-#mod_name+=('Enduro-Loop')          mod_links+=('NULL')
-#mod_name+=('Club-MX-compound')     mod_links+=('NULL')
-#mod_name+=('Motofactory-Compound') mod_links+=('NULL')
-#mod_name+=('Jurassic-Track')       mod_links+=('NULL')
-#mod_name+=('Supermoto-OEM') 	    mod_links+=('NULL')
-#mod_name+=('Enduro-Bike-Pack')     mod_links+=('NULL')
-#------------------------------------------------------------------
 readonly game_number=0
 readonly game_name='MX-Bikes'
 readonly RED='\033[0;31m'
@@ -169,6 +160,8 @@ function download_mods() {
 				echo -e "[${RED}Internet is down${NOCOLOR}]"
 				kill_processes
 			fi
+			
+			echo -e "${GREEN}Downloading ${NOCOLOR}'${RED}${mod_name[$counter]}${NOCOLOR}' "
 
 		    if wget -q --show-progress --no-check-certificate -O "$download_directory/""${mod_name[$counter]}.zip" "$link"; then
 	    		echo -e "${GREEN}Downloded ${RED}'${mod_name[$counter]}'${NOCOLOR} [$remaining] ${GREEN}Remaining${NOCOLOR}."

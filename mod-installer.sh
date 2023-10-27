@@ -1,5 +1,6 @@
 #!/bin/bash
 # Links to compatible Mods: Must be in the correct order.
+#
 mod_name=(
 	'Jurassic-Track'
 	'Supermoto-OEM'
@@ -121,7 +122,7 @@ function ping_wan() {
     fi
 }
 function pull_update() {
-	data_local="$(grep -n "${mod_name[$1]}" "$mods_list_directory/$game_name.list")"
+	data_local="$(grep -n "${mod_name[$1]}:" "$mods_list_directory/$game_name.list")"
 	
 	if [[ $data_local == "" ]]; then
 		sed -i '$a'"${mod_name[$1]}:,false,false,bad," "$mods_list_directory/$game_name.list"

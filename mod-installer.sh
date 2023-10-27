@@ -4,15 +4,15 @@ unset
 # Links to compatible Mods: Must be in the correct order.
 mod_name=(
 	'OEM-Bike-Pack' # 0
-	'K6D-Profile' # 1
+#	'K6D-Profile' # 1
 ) 
 mod_dir=(
 	'/mods' # 0
-	'/profiles' # 1
+#	'/profiles' # 1
 ) 
 mod_links=(
 	"https://download2439.mediafire.com/t18oop8i0wdgYAONk43QuAPXo47QV735CVTf2VwriicPhzwjfpHqn_QWTRUgYVy7_5ZLMnEih2Y2v8OAyp3tvUxmH5m6df_NrQkr2mlMKsetaZaydeUd0bqB9XPbb3Fm9snQf8l7FQRIr8j04z4v3ZTl4JC1metk0owfAml4JmLq/o029owuf76gbqrs/MX+OEM+v0.18.2.zip" # 0
-	"https://www.dropbox.com/scl/fi/px0x5skd1q0e3gyt8txie/K6D-Profile.zip?rlkey=79m1y45ilym5ujw4wv8ss32q6&dl=1" # 1
+#	"https://www.dropbox.com/scl/fi/px0x5skd1q0e3gyt8txie/K6D-Profile.zip?rlkey=79m1y45ilym5ujw4wv8ss32q6&dl=1" # 1
 )
 
 #mod_name+=('Enduro-Loop')          mod_links+=('NULL')

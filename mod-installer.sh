@@ -1,6 +1,6 @@
 #!/bin/bash
 # Links to compatible Mods: Must be in the correct order.
-#
+# Mod names cannot be identical.
 mod_name=(
 	'Jurassic-Track'
 	'Supermoto-OEM'

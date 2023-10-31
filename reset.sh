@@ -60,7 +60,7 @@ function load_backup() {
 	    "$steam_directory/compatdata/655500/pfx/drive_c/users/steamuser/Documents/PiBoSo/MX Bikes"
     )
 
-    #wget -q --no-check-certificate -O "$mods_backup_directory/$game_name-backup.zip" "https://www.dropbox.com/scl/fi/9op80agupjr30rgqbxbwv/MX-Bikes-backup.zip?rlkey=v5u1fpfs5wmvtlo18ozbr25sd&dl=0"
+    #wget -q --no-check-certificate -O "$mods_backup_directory/$game_name-backup.zip" "https://www.dropbox.com/scl/fi/9op80agupjr30rgqbxbwv/MX-Bikes-backup.zip?rlkey=v5u1fpfs5wmvtlo18ozbr25sd&dl=0" # do not un #
 
 	if [[ -e "$mods_backup_directory/$game_name-backup.zip" ]]; then
         rm -r "${game_directorys[$game_number]}/mods"

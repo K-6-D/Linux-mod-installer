@@ -2,7 +2,7 @@
 # Links to compatible Mods: Must be in the correct order.
 # Mod names cannot be identical.
 mod_name=(
-	'150-sx-2021'
+	#'150-sx-2021'
 	'Jurassic-Track'
 	'Supermoto-OEM'
 	'Motofactory-Compound'
@@ -14,7 +14,7 @@ mod_name=(
 #	'K6D-Profile'
 ) 
 mod_dir=(
-	'/mods'
+	#'/mods'
 	'/mods'
 	'/mods'
 	'/mods'
@@ -26,7 +26,7 @@ mod_dir=(
 #	'/profiles'
 ) 
 mod_links=(
-	"https://www.dropbox.com/scl/fi/yjwtc2vfmbctguu50zwi1/2021-ktm-150-sx.zip?rlkey=lof4ohd6usf9rmlxtfn0wv4i4&dl=1"
+	#"https://www.dropbox.com/scl/fi/yjwtc2vfmbctguu50zwi1/2021-ktm-150-sx.zip?rlkey=lof4ohd6usf9rmlxtfn0wv4i4&dl=1"
 	"https://lhm81q.sn.files.1drv.com/y4mVyHZI78T_Lu_dmlhrpRjYcd7VEsVhlF7k_F0wo-3OZ2GtJIDTtIa3lixLm-bk_4SsKSIM0EA4_2XpRFVcm_gLbK9RJJ3tI_GMlHmoUH3CqWis3MB64hGk3vHwLlGbyMY7q2FXntDLa9oQuhBcMA685dYcv0lj6U69RuSJFHWg0LC7SIfdxI2bukSvfdTQZaH/Verified-G0-V1-Jurassic-Track.zip?download&psid=1"
 	"https://pf6umg.sn.files.1drv.com/y4moyuukdlG_vSsmz2kGS4I_DVma2BxPca9umxAlmrke76M4y5TERA5VZecFx35suxKRPFbIm0B7BKycbVxLv51THgazCqurG3BafMT13Z1nAlqU1_JJrH-kgnJA2QvKbljkJhaPDz0cEkIsbe53ElNDtLHx4N1PO2gdZzorxUlTdc7vqez-5UHFNCjfFVh8EPv/Verified-G0-V1-SMOEM-v0.15.1.zip?download&psid=1"
 	"https://lpjjdw.sn.files.1drv.com/y4mSQ8JczP-7yoJr_hDW3ZotPkRxjlmcEsk-W935-vD8psEv3sgACmZegc_N8bv4VzK_lPHfvyD4ssI9uCym7-KQHCFmDDOdbzlNqoQ2EibJtgIjP330gDTuc8O9UJX0BIJYzWdCS-DulMc_O4PH288FnQya_Dx17CkMXLAfe3_ynUan4vxpE8d7Rp4XYHMjxdr/Verified-G0-V1-Motofactory-Compound.zip?download&psid=1"

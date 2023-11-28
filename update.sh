@@ -61,11 +61,13 @@ function all() {
             'https://raw.githubusercontent.com/K-6-D/Linux-mod-installer/main/mod-installer.sh'
             'https://raw.githubusercontent.com/K-6-D/Linux-mod-installer/main/reset.sh'
             'https://raw.githubusercontent.com/K-6-D/Linux-mod-installer/main/update.sh'
+            'https://raw.githubusercontent.com/K-6-D/Linux-mod-installer/main/open.sh'
         )
         executables=(
             "$mod_installer_directory/run.sh"
             "$mod_installer_directory/reset.sh"
             "$mod_installer_directory/update.sh"
+            "$mod_installer_directory/open.sh"
         )
 
         counter=0
@@ -86,16 +88,19 @@ function all() {
             "$mod_images_directory/logo.png"      
             "$mod_images_directory/reset-logo.png"
             "$mod_images_directory/update-logo.png"
+            "$mod_images_directory/open.png"
         )
         logo_links=(
             'https://t4.ftcdn.net/jpg/01/21/22/57/360_F_121225745_6MScSAbSWYSWlRsPJonDPPDcp84BrdKo.jpg'
             'https://images.squarespace-cdn.com/content/54b55e28e4b04d469d0fc8eb/1504188257429-JM5TDS0REGART87DKJ8P/reset+button?format=1500w&content-type=image%2Fjpeg'
             'https://www.stpaulschool.ca/wp-content/uploads/2021/01/New-Update.png'
+            'https://lh3.googleusercontent.com/Qq8jgBfsLRsv_51_7cAOKHpCG_6NnXqrmfCVF9DOlVtVDu7-0NoMZBHd_v173vq-LtLiexyEY6HB318oM-1owQCVClHKvrXyLHA8'
         )
         names_desktop=(
             'mod-installer'
             'reset'
             'update'
+            'open'
         )
         counter=0
 

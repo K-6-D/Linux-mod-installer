@@ -102,6 +102,12 @@ function all() {
             'update'
             'open'
         )
+        Terminal=(
+            'true'
+            'true'
+            'true'
+            'false'
+        )
         counter=0
 
         for link in "${logo_links[@]}"; do
@@ -111,7 +117,7 @@ function all() {
                     Name=${names_desktop[$counter]}
                     Exec=${executables[$counter]}
                     Icon=${logo_names[$counter]}
-                    Terminal=true
+                    Terminal=${Terminal[$counter]}
                     Type=Application
                     StartupNotify=true"\
                     > "$HOME/Desktop/${names_desktop[$counter]}.desktop" && \

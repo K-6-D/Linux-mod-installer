@@ -13,7 +13,4 @@ function find_steam_directory() {
 
 find_steam_directory
 
-xdg-open "$steam_directory/compatdata/655500/pfx/drive_c/users/steamuser/Documents/PiBoSo/MX Bikes"
-
-
-sleep 10
+dolphin "$steam_directory/compatdata/655500/pfx/drive_c/users/steamuser/Documents/PiBoSo/MX Bikes"

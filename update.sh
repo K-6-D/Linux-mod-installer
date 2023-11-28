@@ -112,23 +112,22 @@ function all() {
 
         for link in "${logo_links[@]}"; do
             if [ ! -e "${logo_names[$counter]}" ]; then
-                if wget -q -O "${logo_names[$counter]}" "$link"; then
-                    echo "
-[Desktop Entry]
-Name=${names_desktop[$counter]}
-Exec=${executables[$counter]}
-Icon=${logo_names[$counter]}
-Terminal=${Terminal[$counter]}
-Type=Application
-StartupNotify=true
-                    "\
-                    > "$HOME/Desktop/${names_desktop[$counter]}.desktop" && \
-                    chmod +x "$HOME/Desktop/${names_desktop[$counter]}.desktop"
-                else
+                if ! wget -q -O "${logo_names[$counter]}" "$link"; then
                     echo -e "${RED}Failed to download logo: ${logo_links[$counter]}${NOCOLOR}"
-                    kill_processes
+                    kill_processes &
                 fi
-            fi
+            fi   
+                 
+            echo -e "\
+                \n[Desktop Entry]\
+                \nName=${names_desktop[$counter]}\
+                \nExec=${executables[$counter]}\
+                \nIcon=${logo_names[$counter]}\
+                \nTerminal=${Terminal[$counter]}\
+                \nType=Application\
+                \nStartupNotify=true\
+            " | awk '{$1=$1}1' | sudo tee "$HOME/Desktop/${names_desktop[$counter]}.desktop" >/dev/null && \
+            chmod +x "$HOME/Desktop/${names_desktop[$counter]}.desktop"
             ((counter++))
         done
     }

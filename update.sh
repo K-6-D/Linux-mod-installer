@@ -113,13 +113,15 @@ function all() {
         for link in "${logo_links[@]}"; do
             if [ ! -e "${logo_names[$counter]}" ]; then
                 if wget -q -O "${logo_names[$counter]}" "$link"; then
-                    echo "[Desktop Entry]
-                    Name=${names_desktop[$counter]}
-                    Exec=${executables[$counter]}
-                    Icon=${logo_names[$counter]}
-                    Terminal=${Terminal[$counter]}
-                    Type=Application
-                    StartupNotify=true"\
+                    echo "
+[Desktop Entry]
+Name=${names_desktop[$counter]}
+Exec=${executables[$counter]}
+Icon=${logo_names[$counter]}
+Terminal=${Terminal[$counter]}
+Type=Application
+StartupNotify=true
+                    "\
                     > "$HOME/Desktop/${names_desktop[$counter]}.desktop" && \
                     chmod +x "$HOME/Desktop/${names_desktop[$counter]}.desktop"
                 else

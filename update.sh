@@ -119,7 +119,7 @@ function all() {
             fi   
 
             echo -e "\
-                \n[Desktop Entry]\
+                [Desktop Entry]\
                 \nName=${names_desktop[$counter]}\
                 \nExec=${executables[$counter]}\
                 \nIcon=${logo_names[$counter]}\

@@ -117,7 +117,7 @@ function all() {
                     kill_processes &
                 fi
             fi   
-                 
+
             echo -e "\
                 \n[Desktop Entry]\
                 \nName=${names_desktop[$counter]}\
@@ -126,7 +126,7 @@ function all() {
                 \nTerminal=${Terminal[$counter]}\
                 \nType=Application\
                 \nStartupNotify=true\
-            " | awk '{$1=$1}1' | sudo tee "$HOME/Desktop/${names_desktop[$counter]}.desktop" >/dev/null && \
+            " | awk '{$1=$1}1' | tee "$HOME/Desktop/${names_desktop[$counter]}.desktop" >/dev/null && \
             chmod +x "$HOME/Desktop/${names_desktop[$counter]}.desktop"
             ((counter++))
         done

@@ -13,8 +13,4 @@ function find_steam_directory() {
 
 find_steam_directory
 
-echo "$steam_directory/compatdata/655500/pfx/drive_c/users/steamuser/Documents
-
-sleep 5
-
 dolphin "$steam_directory/compatdata/655500/pfx/drive_c/users/steamuser/Documents" 

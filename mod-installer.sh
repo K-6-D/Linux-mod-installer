@@ -2,7 +2,7 @@
 # Links to compatible Mods: Must be in the correct order.
 # Mod names cannot be identical.
 mod_name=(
-	#'150-sx-2021'
+	'150-sx-2021'
 	'Jurassic-Track'
 	'Supermoto-OEM'
 	'Motofactory-Compound'
@@ -10,11 +10,10 @@ mod_name=(
 	'Enduro-Loop'
 	'Enduro-Bike-Pack'
 	'OEM-Bike-Pack'
-#	'PITBIKE_2'
+	'PITBIKE_2'
 #	'K6D-Profile'
 ) 
 mod_dir=(
-	#'/mods'
 	'/mods'
 	'/mods'
 	'/mods'
@@ -22,11 +21,12 @@ mod_dir=(
 	'/mods'
 	'/mods'
 	'/mods'
-#	'/mods'
+	'/mods'
+	'/mods'
 #	'/profiles'
 ) 
 mod_links=(
-	#"https://www.dropbox.com/scl/fi/yjwtc2vfmbctguu50zwi1/2021-ktm-150-sx.zip?rlkey=lof4ohd6usf9rmlxtfn0wv4i4&dl=1"
+	"https://www.dropbox.com/scl/fi/yjwtc2vfmbctguu50zwi1/2021-ktm-150-sx.zip?rlkey=lof4ohd6usf9rmlxtfn0wv4i4&dl=1"
 	"https://lhm81q.sn.files.1drv.com/y4mVyHZI78T_Lu_dmlhrpRjYcd7VEsVhlF7k_F0wo-3OZ2GtJIDTtIa3lixLm-bk_4SsKSIM0EA4_2XpRFVcm_gLbK9RJJ3tI_GMlHmoUH3CqWis3MB64hGk3vHwLlGbyMY7q2FXntDLa9oQuhBcMA685dYcv0lj6U69RuSJFHWg0LC7SIfdxI2bukSvfdTQZaH/Verified-G0-V1-Jurassic-Track.zip?download&psid=1"
 	"https://pf6umg.sn.files.1drv.com/y4moyuukdlG_vSsmz2kGS4I_DVma2BxPca9umxAlmrke76M4y5TERA5VZecFx35suxKRPFbIm0B7BKycbVxLv51THgazCqurG3BafMT13Z1nAlqU1_JJrH-kgnJA2QvKbljkJhaPDz0cEkIsbe53ElNDtLHx4N1PO2gdZzorxUlTdc7vqez-5UHFNCjfFVh8EPv/Verified-G0-V1-SMOEM-v0.15.1.zip?download&psid=1"
 	"https://lpjjdw.sn.files.1drv.com/y4mSQ8JczP-7yoJr_hDW3ZotPkRxjlmcEsk-W935-vD8psEv3sgACmZegc_N8bv4VzK_lPHfvyD4ssI9uCym7-KQHCFmDDOdbzlNqoQ2EibJtgIjP330gDTuc8O9UJX0BIJYzWdCS-DulMc_O4PH288FnQya_Dx17CkMXLAfe3_ynUan4vxpE8d7Rp4XYHMjxdr/Verified-G0-V1-Motofactory-Compound.zip?download&psid=1"
@@ -34,7 +34,7 @@ mod_links=(
 	"https://v0opyg.sn.files.1drv.com/y4myAmct8BvddK3R8JxrcMrqdfP3Gwhpya75yZE1bLdxlpdShJ4fRta2oC-wwIcTTsNglaJnEar0EcG_4aKtjrV8iFzImeQrkL_DT_NTb7-ee3qWxGJG6nbkxxNXBBrVkT2wd-wFO4InYTKS0c_KmwR7Ac_pj6gH7YKs4Z9qV8CYX_onUSxFqLnpkpOKYD6HMx_/Verified-G0-V1-EnduroLoop-Main.zip?download&psid=1"
 	"https://xortjw.sn.files.1drv.com/y4mWzd45vopRDYI6m8dv1fn02wOCuV_jiDAJXORjyTMLqBpPFkOMPGsGFheOiN0uMCBAJsrrgM9z-k2aLUtaEu4PPI60a_bVGevsG52Fot8NRApflTjmt0nNlh6X9sAPrA2iEiUY9ncqVz_mn0hhQDFNqnhLiI_TJnIeT9x_abn_X5hSc6kOEZMV4WcrN8skDPW/Verified-G0-V1-Enduro-Bike-Pack-v0.15.4.zip?download&psid=1"
 	"https://download2439.mediafire.com/t18oop8i0wdgYAONk43QuAPXo47QV735CVTf2VwriicPhzwjfpHqn_QWTRUgYVy7_5ZLMnEih2Y2v8OAyp3tvUxmH5m6df_NrQkr2mlMKsetaZaydeUd0bqB9XPbb3Fm9snQf8l7FQRIr8j04z4v3ZTl4JC1metk0owfAml4JmLq/o029owuf76gbqrs/MX+OEM+v0.18.2.zip"
-#	"https://weolyg.sn.files.1drv.com/y4mFEmZR3YZ3U-R9_FTIGrpKmzlAxmCG2PX9b3KBiGBCZnApgFpZLOeGSIXAqAz-3EyK7VxODqvVywfl1Oc5rzjNHliO6c5y1eqMHUiqK6Stgzoy1X9P6CkRIxZnoC-Z4JaXZ6iJJW6thvw4bmzrRLlZJPBaikcmmx3NAtejYb_HJcbb5MycfayS14WkHWU-YNn/pit_bike_2.zip?download&psid=1"
+	"https://weolyg.sn.files.1drv.com/y4mFEmZR3YZ3U-R9_FTIGrpKmzlAxmCG2PX9b3KBiGBCZnApgFpZLOeGSIXAqAz-3EyK7VxODqvVywfl1Oc5rzjNHliO6c5y1eqMHUiqK6Stgzoy1X9P6CkRIxZnoC-Z4JaXZ6iJJW6thvw4bmzrRLlZJPBaikcmmx3NAtejYb_HJcbb5MycfayS14WkHWU-YNn/pit_bike_2.zip?download&psid=1"
 #	"https://www.dropbox.com/scl/fi/px0x5skd1q0e3gyt8txie/K6D-Profile.zip?rlkey=79m1y45ilym5ujw4wv8ss32q6&dl=1"
 )
 

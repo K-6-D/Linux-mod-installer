@@ -76,5 +76,5 @@ function load_backup() {
 
 get_game_number
 find_steam_directory
-load_backup
+#load_backup
 kill_processes

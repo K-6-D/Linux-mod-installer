@@ -106,7 +106,7 @@ function all() {
             'true'
             'true'
             'true'
-            'true'
+            'false'
         )
         counter=0
 
